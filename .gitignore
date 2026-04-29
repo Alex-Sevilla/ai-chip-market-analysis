@@ -17,3 +17,12 @@ venv/
 
 # macOS
 .DS_Store
+
+# SQLite temporary files
+*.db-shm
+*.db-wal
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
