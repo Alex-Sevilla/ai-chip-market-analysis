@@ -1,0 +1,16 @@
+# Base de datos (se genera con create_db.py)
+stocks.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
