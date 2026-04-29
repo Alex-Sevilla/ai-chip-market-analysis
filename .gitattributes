@@ -1,0 +1,4 @@
+# Forzar que los archivos .sql sean detectados como SQL
+*.sql linguist-language=SQL
+*.sql linguist-detectable=true
+
