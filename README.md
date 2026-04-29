@@ -55,7 +55,7 @@ python visualizations.py
 
 # 4. Open stock_analysis.sql in VS Code
 #    Connect SQLTools → SQLite → stocks.db
-#    Run queries with Ctrl+E Ctrl+E
+#    Run queries
 ```
 
 ---
