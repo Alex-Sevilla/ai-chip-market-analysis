@@ -203,4 +203,4 @@ plt.savefig('../images/chart4_correlation.png', dpi=150, bbox_inches='tight', fa
 plt.close()
 # print(" chart4_correlation.png")
 
-# print("\n🎉 Todas las imágenes generadas correctamente.")
+# print("\n Todas las imágenes generadas correctamente.")
