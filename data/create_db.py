@@ -1,6 +1,5 @@
 """
-Corre este script UNA VEZ para crear stocks.db desde el CSV.
-Requisito: Python 3 (no necesita instalar nada extra)
+.csv hacia .db
 
 Uso:
     python create_db.py
