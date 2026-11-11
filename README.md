@@ -20,6 +20,15 @@ and financial metrics — all computed without external libraries.
 
 ---
 
+## Interactive Dashboard
+
+**[View the dashboard on Tableau Public](https://public.tableau.com/app/profile/alex.sevilla/viz/SemiconductorStocks2022-2025/Semiconductores)**
+
+KPIs by company, growth of $100, price vs 50- and 200-day moving averages, annual returns, and return correlations.
+Metrics are calculated in SQL (SQLite) and visualized in Tableau. The dashboard uses the same synthetic dataset as this project.
+
+---
+
 ## Files
 
 ```
