@@ -22,6 +22,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 from collections import defaultdict
+from datetime import datetime
 
 matplotlib.use('Agg')
 
@@ -153,18 +154,25 @@ ax.plot(x_idx, closes_plot, color=COLORS['NVDA'], linewidth=1.2, alpha=0.9, labe
 ax.plot(x_idx, ma30_plot,   color='#FFD700',      linewidth=1.5, linestyle='--', label='MA 30d', zorder=4)
 ax.plot(x_idx, ma90_plot,   color='#FF6B6B',      linewidth=1.5, linestyle='--', label='MA 90d', zorder=4)
 
-# Anotar golden cross
-for i in range(1, len(dates_plot)):
-    if (ma30_plot[i] and ma90_plot[i] and ma30_plot[i-1] and ma90_plot[i-1]
-            and ma30_plot[i] > ma90_plot[i] and ma30_plot[i-1] <= ma90_plot[i-1]
-            and dates_plot[i] >= '2023-01-01'):
-        ax.annotate('Golden Cross\n(Feb 2023)', xy=(i, closes_plot[i]),
-                    xytext=(i + 30, closes_plot[i] + 20),
-                    arrowprops=dict(arrowstyle='->', color='white', lw=1.2),
-                    fontsize=8.5, color='white',
-                    bbox=dict(boxstyle='round,pad=0.3', facecolor='#333',
-                              edgecolor='white', alpha=0.8))
-        break
+# Anotar golden cross: el cruce MA30 > MA90 que inicia la racha alcista más larga
+bullish = [bool(a and b and a > b) for a, b in zip(ma30_plot, ma90_plot)]
+best_i, best_len = None, 0
+for i in range(1, len(bullish)):
+    if bullish[i] and not bullish[i - 1]:
+        j = i
+        while j < len(bullish) and bullish[j]:
+            j += 1
+        if j - i > best_len:
+            best_i, best_len = i, j - i
+if best_i is not None:
+    i = best_i
+    cross_label = datetime.strptime(dates_plot[i], '%Y-%m-%d').strftime('%b %Y')
+    ax.annotate(f'Golden Cross\n({cross_label})', xy=(i, closes_plot[i]),
+                xytext=(i + 30, closes_plot[i] + 20),
+                arrowprops=dict(arrowstyle='->', color='white', lw=1.2),
+                fontsize=8.5, color='white',
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='#333',
+                          edgecolor='white', alpha=0.8))
 
 ax.set_xticks(tick_positions)
 ax.set_xticklabels(tick_labels, fontsize=10)

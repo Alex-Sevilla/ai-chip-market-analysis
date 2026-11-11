@@ -47,11 +47,12 @@ ai-chip-market-analysis/
 # 1. Install dependencies
 pip install matplotlib
 
-# 2. Create the database
+# 2. Create the database (run from the data/ folder)
+cd data
 python create_db.py
 
 # 3. Generate visualizations
-python visualizations.py
+python visualization.py
 
 # 4. Open stock_analysis.sql in VS Code
 #    Connect SQLTools → SQLite → stocks.db
@@ -72,8 +73,11 @@ The real story begins in 2023, when NVDA exploded +246% driven by the generative
 |------|-----------|--------|----------|--------|
 | 2022 | TSM | -42% | AMD | -57% |
 | 2023 | **NVDA** | **+246%** | TSM | +40% |
-| 2024 | **NVDA** | **+179%** | INTC | -39% |
-| 2025 | TSM | +16% | NVDA | +35%* |
+| 2024 | **NVDA** | **+179%** | INTC | -58% |
+| 2025 | INTC | +82% | NVDA | +35% |
+
+In 2025 the ranking flipped: INTC rebounded +82% from a very low base, while NVDA,
+after two record years, posted the smallest gain of the group.
 
 ---
 
@@ -109,9 +113,11 @@ a casualty of losing market share to AMD and ARM in both CPUs and AI accelerator
 ### 4. 30-Day & 90-Day Moving Averages — NVDA
 > *AVG() OVER · ROWS BETWEEN · trend signal logic*
 
-The MA30 crossed above the MA90 in **February 2023** — a classic "golden cross"
-that preceded NVDA's historic rally. The signal stayed bullish for the rest of
-2023 and through 2024.
+After a brief false signal in August 2022 (it lasted two weeks), the MA30 crossed
+above the MA90 on **December 2, 2022** — a classic "golden cross" that preceded
+NVDA's historic rally. The signal stayed bullish for most of 2023
+and 2024, with two short bearish spells (October–November 2023 and mid-September to
+mid-October 2024).
 
 ```sql
 -- Signal logic embedded in the query:
@@ -133,8 +139,9 @@ END AS signal
 | INTC | 2025-Q3 | +47% | 2024-Q2 | -30% |
 | TSM | 2025-Q2 | +34% | 2022-Q2 | -20% |
 
-Q2 2022 was the worst quarter for every ticker — peak inflation fears and Fed
-rate hike expectations hit the sector simultaneously.
+Q2 2022 was the worst quarter for NVDA, AMD and TSM — peak inflation fears and Fed
+rate hike expectations hit the sector simultaneously. INTC's worst quarter came
+later, in Q2 2024 (-30%).
 
 ---
 
@@ -184,9 +191,10 @@ in the red (-31%), reflecting its structural decline in market share.
 
 ### NVDA Price vs Moving Averages (MA30 & MA90)
 
-The **Golden Cross** in February 2023 — when the 30-day MA crossed above the 90-day MA —
-signaled the start of NVDA's historic rally. The bullish signal held through all of 2023
-and 2024, making it one of the most consequential trend signals in the dataset.
+The **Golden Cross** on December 2, 2022 — when the 30-day MA crossed above the 90-day MA —
+signaled the start of NVDA's historic rally. The bullish signal held for most of 2023
+and 2024, with only two short bearish interruptions, making it one of the most
+consequential trend signals in the dataset.
 
 ![NVDA Moving Averages](images/chart3_nvda_moving_avg.png)
 

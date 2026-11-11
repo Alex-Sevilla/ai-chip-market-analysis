@@ -98,7 +98,7 @@ ORDER BY total_return_pct DESC;
 -- ============================================================
 -- QUERY 4: Media móvil 30 y 90 días — señales de tendencia en NVDA
 -- Técnicas: Window functions con ROWS BETWEEN, filtro por ticker
--- Insight: Cruce de MA30 sobre MA90 en feb-2023 marcó el inicio del rally IA
+-- Insight: Cruce de MA30 sobre MA90 el 2-dic-2022 marcó el inicio del rally IA
 -- ============================================================
 SELECT
     date,
